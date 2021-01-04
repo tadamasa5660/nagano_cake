@@ -1,0 +1,49 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">配送先編集</h3>
+   <div class="row">
+     <%= form_with model: @address, url: delivery_path, local: true do |f| %>
+       <div class="leftspace">
+         <table class="col-xs-10 tablespace">
+           <thead>
+             <tr>
+               <th class="col-xs-3 delivery-table"></th>
+               <th class="col-xs-3"></th>
+               <th class="col-xs-3"></th>
+               <th class="col-xs-3"></th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td class="font-edit3 delivery-table">郵便番号(ハイフンなし)</td>
+               <td>
+                 <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td class="font-edit3 delivery-table">住所</td>
+               <td colspan="2">
+                 <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td class="font-edit3 delivery-table">宛名</td>
+               <td>
+                 <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td>
+                 <%= f.submit "編集内容を保存", class: "btn btn-success b3 col-xs-12" %>
+               </td>
+             </tr>
+           </tbody>
+          </table>
+       </diV>
+     <% end %>
+   </div>
+  </div>
+</div>

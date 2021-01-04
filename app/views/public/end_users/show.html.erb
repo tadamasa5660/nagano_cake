@@ -1,0 +1,70 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">マイページ</h3>
+   <div class="row">
+     <div class="leftspace col-xs-12 table-b">
+        <strong class="font-edit5 table-space-end">登録情報</strong>
+        <%= link_to "編集する", end_users_edit_path(current_customer), class: "btn btn-success b2 no-line"  %>
+     </div>
+     <div class="leftspace col-xs-12 table-b">
+       <table border="1" class="col-xs-6 blackline2">
+        <thead>
+        </thead>
+        <tbody>
+          <tr class="tablehi">
+            <td class="col-xs-3 backcollor">氏名</td>
+            <td class="col-xs-9">
+              <%= @customer.last_name %>
+              <%= @customer.first_name %>
+            </td>
+          </tr>
+          <tr class="tablehi">
+            <td class="col-xs-3 backcollor">カナ</td>
+            <td class="col-xs-9">
+              <%= @customer.last_name_kana %>
+              <%= @customer.first_name_kana %>
+            </td>
+          </tr>
+           <tr class="tablehi">
+            <td class="col-xs-3 backcollor">郵便番号</td>
+            <td class="col-xs-9">
+              <%= @customer.postal_code %>
+            </td>
+          </tr>
+           <tr class="tablehi">
+            <td class="col-xs-3 backcollor">住所</td>
+            <td class="col-xs-9">
+              <%= @customer.address %>
+            </td>
+          </tr>
+           <tr class="tablehi">
+            <td class="col-xs-3 backcollor">電話番号</td>
+            <td class="col-xs-9">
+              <%= @customer.telephone_number %>
+            </td>
+          </tr>
+           <tr class="tablehi">
+            <td class="col-xs-3 backcollor">メールアドレス</td>
+            <td class="col-xs-9">
+              <%= @customer.email %>
+            </td>
+          </tr>
+           <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+     <div class="leftspace col-xs-12 table-b">
+       <strong class="font-edit5 table-space-end">配送先　</strong>
+       <%= link_to "編集する", deliverys_path(current_customer), class: "btn btn-primary b3 no-line"  %>
+     </div>
+     <div class="leftspace col-xs-12 table-b">
+       <strong class="font-edit5 table-space-end">注文履歴</strong>
+       <%= link_to "編集する", orders_path(current_customer), class: "btn btn-primary b3 no-line"  %>
+       </span>
+     </div>
+   </div>
+  </div>
+</div>

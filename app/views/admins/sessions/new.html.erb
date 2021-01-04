@@ -1,0 +1,57 @@
+<div class="body">
+   <div class="container">
+      <div class="row">
+        <h3 class="col-xs-offset-1">管理者ログイン</h3>
+        <div class="col-xs-offset-2">
+          <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :'メールアドレス' %>
+                  </td>
+                  <td class="col-xs-10">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class:"col-xs-12" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :'パスワード' %>
+                  </td>
+                  <td class="col-xs-9">
+                    <%= f.password_field :password, autocomplete: "current-password", class:"col-xs-12" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3"></td>
+                  <td class="col-xs-9">
+                    <%= f.submit "ログイン", class: "btn btn-primary b1" %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+   </div>
+</div>
+<br>
+
+
+

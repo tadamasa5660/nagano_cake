@@ -1,0 +1,77 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">商品新規登録</h3>
+   <div class="row col-xs-offset-2">
+    <div class="new_item">
+      <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+        <table class="tablespace">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"商品画像" %>
+              </td>
+              <td>
+                <%= f.attachment_field :image, placeholder: "Image" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"商品名" %>
+              </td>
+              <td>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"商品名", class:"col-xs-10" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"商品説明" %>
+              </td>
+              <td>
+                <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", placeholder:"ここに説明文を記述します", class:"col-xs-10 introduction" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"ジャンル" %>
+              </td>
+              <td>
+                <%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id]},{ include_blank: '-- 選択してください --'}, class:"col-xs-10" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"税抜き価格" %>
+              </td>
+              <td>
+                <%= f.text_field :price, autofocus: true, autocomplete: "price", placeholder:"1000", class:"col-xs-10" %>
+                <label>円</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3">
+                <%= f.label :"販売ステータス" %>
+              </td>
+              <td>
+                <label><%= f.radio_button :is_active, true, checked: "checked" %> 販売中</label>
+                <label><%= f.radio_button :is_active, false %> 販売停止中</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-xs-3"></td>
+              <td>
+                <%= f.submit "新規登録", class: "btn btn-success b3" %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+   </div>
+  </div>
+</div>

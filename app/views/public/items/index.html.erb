@@ -1,0 +1,54 @@
+<div class="body">
+    <div class="container">
+     <div class="row">
+        <div class="col-xs-2 top">
+         <table class="genre-table sidline2">
+            <thead>
+              <tr class="grayline3">
+                <th>
+                  <p class="genre-table-top">ジャンル検索</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @genre.each do |genre| %>
+               <tr class="genre-table-bottom">
+                <td>
+                 <%= link_to items_path(genre_id: genre.id) do %>
+                   <%= genre.name %>
+                 <% end %>
+                </td>
+               </tr>
+              <% end %>
+            </tbody>
+          </table>
+         </div>
+         <div class="col-xs-8 paginate">
+             <div class="left">
+              <h2>商品一覧</h2>
+              <p>(全
+              <%= @items.count %>
+              件)</p>
+             </div>
+             <div class="left">
+               <% @item.each do |item| %>
+                 <ul class="new-item">
+                     <li>
+                         <%= link_to item_path(item.id) do %>
+                          <%= attachment_image_tag(item, :image, format: 'jpeg', class: "pull-left profile-img", fallback: "", size:"180x120") %><br>
+                          <%= item.name %><br>
+                          <%= number_to_currency(item.price, :unit => "￥", :precision => 0) %><br>
+                         <% end %>
+                     </li>
+                 </ul>
+               <% end %>
+             </div>
+             <%= paginate @item %>
+         </div>
+     </div>
+    </div>
+</div>
+<br>
+
+
+

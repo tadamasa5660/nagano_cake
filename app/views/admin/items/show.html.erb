@@ -1,0 +1,65 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">商品詳細</h3><br>
+   <div class="row">
+    <div class="col-xs-3 leftspace">
+     <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+      <%= attachment_image_tag(@item, :image, format: 'jpeg', class: "pull-left profile-img", fallback: "", size: "220x180") %>
+     <% end %>
+    </div>
+    <div class="col-xs-7">
+     <table class="tablespace2">
+      <thead>
+       <tr>
+        <th></th>
+        <th></th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td class="col-xs-3">商品名</td>
+        <td>
+         <%= @item.name %>
+       <tr>
+        <td class="col-xs-3">商品説明</td>
+        <td>
+         <%= @item.introduction %>
+        </td>
+       </tr>
+       <tr>
+        <td class="col-xs-3">ジャンル</td>
+        <td>
+         <%= @item.genre.name %>
+        </td>
+       </tr>
+       <tr>
+        <td class="col-xs-3">税込価格<br>
+         (税抜価格)
+        </td>
+        <td>
+         <%= (@item.price*1.1).floor.to_s(:delimited) %>
+         (
+         <%= @item.price.to_s(:delimited) %>
+         )円
+        </td>
+       </tr>
+       <tr>
+        <td class="col-xs-3">販売ステータス</td>
+        <td>
+         <% if @item.is_active == true %>
+          <p class="green">販売中</p>
+          <% else %>
+          <p class="silver">販売停止中</p>
+         <% end %>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <br>
+   <div class="col-xs-offset-5">
+    <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success b1" %>
+   </div>
+  </div>
+</div>

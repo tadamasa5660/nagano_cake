@@ -1,0 +1,55 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">ログイン</h3>
+   <div class="row">
+     <div class="col-xs-offset-1 col-xs-12">
+       <h5>会員の方はこちらからログイン</h5>
+     </div>
+     <br><br>
+     <div  class="col-xs-offset-2 col-xs-12">
+       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+         <table class="tablespace2">
+           <thead>
+             <tr>
+               <th class="col-xs-5"></th>
+               <th class="col-xs-12"></th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>メールアドレス</td>
+               <td>
+                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-xs-12" %>
+               </td>
+             </tr>
+             <tr>
+               <td>パスワード</td>
+               <td>
+                 <%= f.password_field :password, autocomplete: "current-password", class:"col-xs-12" %>
+               </td>
+             </tr>
+             <tr>
+               <td></td>
+               <td>
+                 <%= f.submit "ログイン", class: "btn btn-primary b2" %>
+               </td>
+             </tr>
+           </tbody>
+          </table>
+       <% end %>
+      </div>
+      <div class="col-xs-offset-1 col-xs-12">
+       <h5>会員登録がお済みでない方</h5>
+        <p class="col-xs-offset-1">
+          <span class="there">
+            <%= link_to new_customer_registration_path do %>
+             こちら
+            <% end %>
+          </span>
+            から新規登録を行ってください。
+        </p>
+      </div>
+      <%= flash[:error] %>
+   </div>
+  </div>
+</div>

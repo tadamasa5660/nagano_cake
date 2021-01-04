@@ -1,0 +1,57 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">注文情報入力</h3>
+   <div class="row">
+     <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
+      <div class="leftspace list-bottom">
+          <h4>支払方法</h4>
+          <div class="leftspace">
+            <label><%= f.radio_button :payment_method, "クレジットカード", checked: "checked" %> クレジットカード</label><br>
+            <label><%= f.radio_button :payment_method, "銀行振込" %> 銀行振込</label>
+          </div>
+       </div>
+       <div class="leftspace list-bottom">
+         <h4>お届け先</h4>
+         <div class="leftspace">
+            <label><%= f.radio_button :address_status, "自身の住所", checked: "checked" %> ご自身の住所</label>
+            <div>
+              <span class="col-xs-11">
+                <%= "〒" + current_customer.postal_code %>
+                <%= current_customer.address %><br>
+                <%= current_customer.last_name %>
+                <%= current_customer.first_name %>
+               </span>
+            </div>
+         </div>
+         <div class="leftspace list-bottom">
+           <label><%= f.radio_button :address_status, "登録住所" %> 登録済み住所から選択</label>
+           <div class="col-xs-11">
+             <%= f.collection_select :address_id, @address, :id, :full_address %>
+           </div>
+         </div>
+         <div class="leftspace">
+           <label><%= f.radio_button :address_status, "入力住所" %> 新しいお届け先</label>
+           <div class="col-xs-11 list-bottom">
+            <%= f.label :"郵便番号(ハイフンなし)", class: "col-xs-3 font-edit" %>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "col-xs-3" %>
+           </div>
+           <br><br>
+           <div class="col-xs-11 list-bottom">
+             <%= f.label :"住所", class: "col-xs-3 font-edit" %>
+             <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "col-xs-6" %>
+           </div>
+           <br><br>
+           <div class="col-xs-11 list-bottom">
+             <%= f.label :"宛名", class: "col-xs-3 font-edit" %>
+             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-xs-3" %>
+           </div>
+         </div>
+       </div>
+       <br><br>
+       <div class="col-xs-12 paginate">
+         <%= f.submit "確認画面へ進む", class: "btn btn-primary b1" %>
+       </div>
+      <% end %>
+   </div>
+  </div>
+</div>

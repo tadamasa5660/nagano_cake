@@ -1,0 +1,112 @@
+<div class="body">
+    <div class="container">
+     <h3 class="col-xs-offset-1">
+       <p class: "col-xs-offset-1 col-xs-9">
+         <%= @customer.last_name %>
+         <%= @customer.first_name %>
+         の会員情報編集
+       </p>
+     </h3>
+     <div class="row">
+       <div class="col-xs-offset-1">
+         <%= form_with model: @customer, url: admin_end_user_path, local: true do |f| %>
+            <table class="tablespace2">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"会員ID" %>
+                  </td>
+                  <td>
+                    <%= @customer.id %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"氏名" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border" %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border leftspace" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"商品説明" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border" %>
+                    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border leftspace" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"郵便番号" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :postal_code, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"住所" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :address, autofocus: true, autocomplete: "name", class: "col-xs-9 box-border" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"電話番号" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"メールアドレス" %>
+                  </td>
+                  <td>
+                    <%= f.text_field :email, autofocus: true, autocomplete: "name", class: "col-xs-4 box-border" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-xs-3">
+                    <%= f.label :"退会ステータス" %>
+                  </td>
+                  <td>
+                    <label><%= f.radio_button :is_active, "有効", checked: "checked" %> 有効</label>
+                    <label><%= f.radio_button :is_active, "退会" %> 退会</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <%= f.submit "変更を保存", class: "btn btn-success b1" %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+          <br>
+        </div>
+     </div>
+    </div>
+</div>
+
+
+
+
+
+
+

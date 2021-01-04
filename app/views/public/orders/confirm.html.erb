@@ -1,0 +1,85 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">注文情報確</h3>
+   <div class="row col-xs-12">
+     <div class="leftspace col-xs-7 list-bottom2">
+       <table border="1" class="blackline2 table-b">
+          <thead>
+            <tr class="tablehi backcollor">
+              <th class="col-xs-6 font-edit">ジャンル検索</th>
+              <th class="col-xs-2 font-edit">単価(税込)</th>
+              <th class="col-xs-2 font-edit">数量</th>
+              <th class="col-xs-2 font-edit">小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_item.each do |cart_item| %>
+             <tr class="tablehi">
+               <td>
+                 <%= attachment_image_tag(cart_item.item, :image, format: 'jpeg', class: "pull-left profile-img col-xs-3", fallback: "", size:"30x40") %>
+                 <%= cart_item.item.name %>
+               </td>
+               <td class="table-s">
+                 <%=(cart_item.item.price*1.1).floor.to_s(:delimited) %>
+               </td>
+               <td class="table-s">
+                 <%= cart_item.amount %>
+               </td>
+               <td class="table-s">
+                 <%= ((cart_item.item.price*1.1)*(cart_item.amount)).floor.to_s(:delimited) %>
+               </td>
+             </tr>
+           <% end %>
+          </tbody>
+        </table>
+     </div>
+     <%= form_with model: @order, url: orders_path, local: true do |f| %>
+       <div class="leftspace col-xs-3">
+          <table border="1" class="blackline2 table-b col-xs-12">
+            <thead>
+            </thead>
+            <tbody>
+              <tr class="tablehi">
+               <td class="table-s backcollor">送料</td>
+               <td class="table-s">
+                 <%= f.label :shipping_cost, @shipping_cost.floor.to_s(:delimited), class:"font-edit3" %>
+               </td>
+              </tr>
+              <tr class="tablehi">
+               <td class="table-s backcollor">商品合計</td>
+               <td class="table-s">
+                 <%= @sum.floor.to_s(:delimited) %>
+               </td>
+              </tr>
+              <tr class="tablehi">
+               <td class="table-s backcollor">請求合計</td>
+               <td class="table-s">
+                 <%= @total_payment.floor.to_s(:delimited) %>
+               </td>
+              </tr>
+            </tbody>
+          </table>
+       </div>
+    <div class="col-xs-offset-1 col-xs-11 list-bottom2">
+      <div class="col-xs-12">
+       <label class="label-f">支払方法</label>
+       <%= f.label :payment_method, @order.payment_method, class:"font-edit3" %>
+      </div>
+      <div class="col-xs-12">
+       <label class="label-f">お届け先</label>
+       <%= f.label :postal_code, "〒" + @order.postal_code, class:"font-edit3" %>
+       <%= f.label :address, @order.address, class:"font-edit3" %>
+       <%= f.label :name, @order.name, class:"font-edit3" %>
+      </div>
+    </div>
+    <div <div class="col-xs-12 paginate">
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.submit "注文を確定する", class:"btn btn-primary b1" %>
+    </div>
+    <% end %>
+   </div>
+  </div>
+</div>

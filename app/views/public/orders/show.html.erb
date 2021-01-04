@@ -1,0 +1,108 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">注文履歴詳細</h3>
+   <div class="row">
+     <div class="leftspace col-xs-6">
+       <p class="order-font-edit">注文情報</p>
+       <table border="1" class="col-xs-12 blackline2 table-b">
+          <thead>
+            <tr>
+              <th class="col-xs-2"></th>
+              <th class="col-xs-10"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-s backcollor">注文日</td>
+              <td class="table-h">
+                <%= l @order.created_at, format: :short %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-s backcollor">配送先</td>
+              <td class="table-h">
+                <%= "〒" + @order.postal_code %><br>
+                <%= @order.address %><br>
+                <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-s backcollor">支払方法</td>
+              <td class="table-h">
+                <%= @order.payment_method %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-s backcollor">ステータス</td>
+              <td class="table-h">
+                <%= @order.status %>
+              </td>
+            </tr>
+          </tbody>
+       </table>
+     </div>
+     <div class="col-xs-3">
+       <p class="order-font-edit">請求情報</p>
+       <table border="1" class="col-xs-12 blackline2 table-b">
+         <thead>
+           <tr>
+             <th class="col-xs-6"></th>
+             <th class="col-xs-4"></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td class="table-s backcollor">商品合計</td>
+             <td class="table-h">
+               <%= @order_price.to_s(:delimited) %>
+             </td>
+           </tr>
+           <tr>
+             <td class="table-s backcollor">配送料</td>
+             <td class="table-h">
+               <%= @order.shipping_cost.to_s(:delimited) %>
+             </td>
+           </tr>
+           <tr>
+             <td class="table-s backcollor">ご請求額</td>
+             <td class="table-h">
+               <%= @order.total_payment.to_s(:delimited) %>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+     <div class="leftspace col-xs-7">
+       <p class="order-font-edit">注文内容</p>
+       <table border="1" class="col-xs-12 blackline2 table-b">
+           <thead>
+             <tr class="backcollor">
+               <th class="col-xs-4 backcollor table-h">商品</th>
+               <th class="col-xs-2 backcollor table-h">単価（税込）</th>
+               <th class="col-xs-1 backcollor table-h">個数</th>
+               <th class="col-xs-1 backcollor table-h">小計</th>
+             </tr>
+           </thead>
+           <tbody>
+             <% @order_details.each do |order_detail| %>
+               <tr>
+                 <td class="table-h">
+                   <%= order_detail.item.name %>
+                 </td>
+                 <td class="table-h">
+                   <%= (order_detail.item.price*1.1).floor %>
+                 </td>
+                 <td class="table-h">
+                   <%= order_detail.amount %>
+                 </td>
+                 <td class="table-h">
+                   <%= (order_detail.item.price*1.1 * order_detail.amount).floor %>
+                 </td>
+               </tr>
+             <% end %>
+           </tbody>
+       </table>
+     </div>
+   </div>
+  </div>
+</div>

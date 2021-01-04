@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+   <header class="navbar">
+    <div class="container">
+     <nav class="nav navbar-nav">
+      <span class="col-xs-2">
+       <%= link_to 'LOGO', root_path, class: "navbar-left" %>
+      </span>
+      <span class="col-xs-10">
+       <ul class="navbar-right">
+        <% if admin_signed_in? %>
+        <li>
+          <%= link_to '商品一覧', admin_items_path %>
+         </li>
+         <li>
+          <%= link_to '会員一覧', admin_end_users_path %>
+         </li>
+         <li>
+          <%= link_to '注文履歴一覧', admin_orders_path %>
+         </li>
+         <li>
+          <%= link_to 'ジャンル一覧', admin_genres_path %>
+         </li>
+         <li>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+         </li>
+        <% else %>
+          <% if customer_signed_in? %>
+            <p class="topname">
+             ようこそ、
+             <%= current_customer.last_name %>
+             さん！
+            </p>
+           <li>
+            <%= link_to 'マイページ', end_users_my_page_path %>
+           </li>
+           <li>
+            <%= link_to '商品一覧', items_path %>
+           </li>
+           <li>
+            <%= link_to 'カート', cart_items_path %>
+           </li>
+           <li>
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+         <% else %>
+          <li>
+            <%= link_to 'about', about_path %>
+           </li>
+           <li>
+            <%= link_to '商品一覧', items_path %>
+           </li>
+           <li>
+            <%= link_to '新規登録', new_customer_registration_path %>
+           </li>
+           <li>
+            <%= link_to 'ログイン', new_customer_session_path %>
+           </li>
+         <% end %>
+        <% end %>
+       </ul>
+      </span>
+     </nav>
+    </div>
+   </header>
+   <%= yield %>
+   <footer class="navbar">
+    <div class="container">
+     <div class="row">
+      <div class="col-xs-12">
+      </div>
+     </div>
+    </div>
+   </footer>
+  </body>
+</html>

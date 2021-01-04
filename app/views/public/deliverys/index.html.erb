@@ -1,0 +1,84 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">配送先登録/一覧</h3>
+   <div class="row">
+      <div class="leftspac3 col-xs-12 delivery-list-bottom">
+       <%= form_with model: @address, url: deliverys_path, local: true do |f| %>
+         <table class="col-xs-10 tablespace">
+           <thead>
+             <tr>
+               <th class="col-xs-3"></th>
+               <th class="col-xs-3"></th>
+               <th class="col-xs-4"></th>
+               <th class="col-xs-2"></th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>郵便番号(ハイフンなし)</td>
+               <td>
+                 <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td>住所</td>
+               <td colspan="2">
+                 <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td>宛名</td>
+               <td>
+                 <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子", class: "col-xs-12" %>
+               </td>
+               <td></td>
+               <td>
+                 <%= f.submit "新規登録", class: "btn btn-success b2" %>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+        <% end %>
+      </div>
+      <div class="leftspac col-xs-12">
+       <table border="1" class="col-xs-8 blackline2 table-b">
+        <thead>
+         <tr class="tablehi backcollor">
+          <th class="col-xs-2 table-s">郵便番号</th>
+          <th class="col-xs-4 table-s">住所</th>
+          <th class="col-xs-2 table-s">宛名</th>
+          <th class="col-xs-4 table-s"></th>
+         </tr>
+        </thead>
+        <tbody>
+         <% @addresses.each do |address| %>
+          <tr class="tablehi">
+           <td>
+            <%= address.postal_code %>
+           </td>
+           <td>
+            <%= address.address %>
+           </td>
+           <td>
+            <%= address.name %>
+           </td>
+           <td>
+             <span class="col-xs-6 right">
+               <%= link_to '編集する', edit_delivery_path(address.id), class: "btn delivery-edit-b b6" %>
+             </span>
+             <span class="col-xs-6 left">
+               <%= link_to '削除する', delivery_path(address.id), method: :delete, class: "btn btn no-bo b6" %>
+             </span>
+           </td>
+          </tr>
+         <% end %>
+        </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+</div>

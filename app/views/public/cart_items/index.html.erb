@@ -1,0 +1,88 @@
+<div class="body">
+  <div class="container">
+    <div class="col-xs-offset-1 col-xs-10">
+      <span  class="col-xs-4">
+        <h3>ショッピングカート</h3>
+      </span>
+      <span class="col-xs-offset-6 col-xs-2 cartitem-top">
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :post, class:"btn btn-danger" %>
+      </span>
+    </div>
+   <div class="row">
+     <div class="col-xs-offset-1 col-xs-10">
+       <table border="1" class="col-xs-12 blackline2 table-b">
+          <thead>
+            <tr class="tablehi backcollor">
+              <th class="col-xs-4">商品名</th>
+              <th class="col-xs-2">単価(税込)</th>
+              <th class="col-xs-2">数量</th>
+              <th class="col-xs-2">小計</th>
+              <th class="col-xs-2"></th>
+            </tr>
+          </thead>
+          <tbody class="t-center">
+           <% @cart_item.each do |cart_item| %>
+             <tr class="tablehi">
+               <td>
+                 <%= attachment_image_tag(cart_item.item, :image, format: 'jpeg', class: "pull-left profile-img", fallback: "", size:"50x30") %>
+                 <%= cart_item.item.name %>
+               </td>
+               <td>
+                 <%=(cart_item.item.price*1.1).floor.to_s(:delimited) %>
+               </td>
+               <td>
+                 <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
+                  <span class="col-xs-6 middle">
+                    <%= f.select :amount, [1, 2, 3, 4, 5, 6, 7, 8, 9], class:"select" %>
+                  </span>
+                  <span class="col-xs-6">
+                     <%= f.submit "変更" , class:"btn btn-success b4" %>
+                  </span>
+                 <% end %>
+               </td>
+               <td>
+                 <%= ((cart_item.item.price*1.1)*(cart_item.amount)).floor.to_s(:delimited) %>
+               </td>
+               <td>
+                 <div>
+                   <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger b2" %>
+                 </div>
+               </td>
+             </tr>
+           <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-xs-12">
+        <div class="continue">
+          <span class="col-xs-offset-1 col-xs-3">
+            <%= link_to '買い物を続ける', root_path, class:"btn btn-primary b3" %>
+          </span>
+          <span>
+            <table class="col-xs-offset-4 col-xs-3 blackline2">
+              <thead>
+                <tr>
+                  <th class="col-xs-6"></th>
+                  <th class="col-xs-6"></th>
+                </tr>
+              </thead>
+              <tbody class="blackline3">
+                <tr class="tablehi">
+                   <td class="blackline3">
+                     合計金額
+                   </td>
+                   <td>
+                     <%= @sum.floor.to_s(:delimited) %>
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-12 paginate b-top">
+        <%= link_to "情報入力に進む", new_order_path, class:"btn btn-success b1" %>
+      </div>
+   </div>
+  </div>
+</div>

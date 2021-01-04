@@ -1,0 +1,496 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+    color: black;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    height: 100px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    border: 1px solid black;
+}
+
+@media screen and (min-width: 768px){
+.container {
+    width: 98%;
+}
+}
+
+@media screen and (min-width: 992px){
+.container {
+    width: 100%;
+}
+}
+
+.body {
+    padding-bottom: 50px;
+}
+
+.navbar-nav {
+    margin: 7.5px -15px;
+    width: 100%;
+}
+
+.tablespace {
+    border-collapse: separate;
+    border-spacing: 4px 6px;
+}
+
+.tablespace2 {
+    border-collapse: separate;
+    border-spacing: 4px 10px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 3px 20px;
+    background-color: #DDDDDD;
+    display: inline-block;
+}
+
+h5 {
+    font-size: 14px;
+    margin: 10px 0 15px 20px;
+    padding: 3px 10px;
+    background-color: #DDDDDD;
+    display: inline-block;
+}
+
+.bg_test-text {
+    border: solid 1px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.bg_test {
+    background-image: url(cakes.jpg);
+    text-align:  center;
+    padding:  100px;
+    border: solid 2px;
+    background-size:  cover;
+}
+
+.box {
+  text-align: center;
+  width: 320px;
+  height: 240px;
+}
+
+.cartitem-top {
+    margin: 10px 0 20px 0;
+}
+
+.t-center>tr>td {
+    vertical-align: middle;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-xs-1{
+    width: 8.3%;
+}
+
+.col-xs-2{
+    width: 16.6%;
+}
+
+.col-xs-3{
+    width: 25%;
+}
+
+.col-xs-4{
+    width: 33.3%;
+}
+
+.col-xs-5{
+    width: 41.6%;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+.col-xs-7{
+    width: 58.3%;
+}
+
+.col-xs-8{
+    width: 66.6%;
+}
+
+.col-xs-9{
+    width: 75%;
+}
+
+.col-xs-10{
+    width: 83.3%;
+}
+
+.col-xs-11{
+    width: 91.6%;
+}
+
+.col-xs-12 {
+    width: 100%;
+}
+
+.col-xs-offset-1{
+    margin-left: 8.3%;
+}
+
+.col-xs-offset-2{
+    margin-left: 16.6%;
+}
+
+.col-xs-offset-3 {
+    margin-left: 25%;
+}
+
+.col-xs-offset-4{
+    margin-left: 33.3%;
+}
+
+.col-xs-offset-5{
+    margin-left: 41.6%;
+}
+
+.col-xs-offset-6{
+    margin-left: 50%;
+}
+
+.col-xs-offset-7{
+    margin-left: 58.3%;
+}
+
+.col-xs-offset-8{
+    margin-left: 66.6%;
+}
+
+.col-xs-offset-9{
+    margin-left: 75%;
+}
+
+.col-xs-offset-10{
+    margin-left: 83.3%;
+}
+
+.col-xs-offset-11{
+    margin-left: 91.6%;
+}
+
+.col-xs-offset-12 {
+    margin-left: 100%;
+}
+
+.navbar-left {
+    font-size: 26px;
+    color: black;
+    padding: 8px 60px;
+    border: 1px solid black;
+}
+
+.navbar-right {
+    margin: 0 0 0 auto;
+}
+
+.navbar-right {
+    font-size: 12px;
+    color: black;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-right>li {
+    display: inline-block;
+    width: 100px;
+    height: 32px;
+    margin-left: 20px;
+    border: 1px solid #DDDDDD;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.navbar-right>li>a {
+    color: black;
+    text-decoration: none;
+}
+
+.top-font {
+    color: black;
+    text-decoration: none;
+}
+
+.topname {
+    font-size: 16px;
+    margin: 15px 30px 0 0;
+}
+
+.b1 {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.b2 {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.b3 {
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.b4 {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.b5 {
+    width: 210px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.b6 {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.sidline {
+    border-collapse: collapse;
+}
+
+.sidline2 {
+    border: 1px solid gray;
+}
+
+.sidline3 {
+    border: 1px solid gray;
+}
+
+.sidline3>tbody>th>td {
+    border-top: solid 1px black;
+}
+
+.blackline2>thead>tr>th {
+    border-bottom: solid 1px black;
+}
+
+.box-border{
+    border-radius: 5px;
+}
+
+.blackline {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px 0;
+}
+
+.blackline2 {
+    border-bottom: solid 1px black;
+}
+
+.blackline3 {
+    border: solid 1px black;
+}
+
+.grayline {
+    border-color: #DDDDDD;
+    border-style: solid;
+    border-width: 1px 0;
+}
+
+.grayline2 {
+    width: 30px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 0 1px;
+}
+
+.grayline3 {
+    width: 30px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.plus {
+    margin-top: 30px;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right
+}
+
+.paginate {
+    text-align: center;
+}
+
+.green {
+    color: #66CC33;
+}
+
+.silver {
+    color: silver;
+}
+
+.introduction {
+    height: 100px;
+}
+
+.leftspace {
+    margin-left: 50px;
+}
+
+.leftspace2 {
+    margin-left: 100px;
+}
+
+.leftspace3 {
+    margin-left: 30px;
+}
+
+.edit-b {
+    margin-left: 30px;
+}
+
+.top {
+    margin: 10px 0 0 10px;
+}
+
+.no-border>thead>tr>th {
+    border-bottom: none;
+    border-top: none;
+}
+
+.no-border>tbody>tr>td {
+    border-bottom: none;
+    border-top: none;
+}
+
+.center-align {
+  display: flex;
+  align-items: center;
+}
+
+.no-line{
+    text-decoration: none;
+}
+
+tr>td>a {
+    color: black;
+    text-decoration: underline;
+}
+
+.right-box {
+    margin: 50px 0 0 50px;
+}
+
+.about {
+    font-size: 70px;
+}
+
+.about2 {
+    font-size: 24px;
+}
+
+.new-item {
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.new-item>li>a {
+    color: black;
+}
+
+.genre-table {
+    width: 140px;
+    height: 300px;
+}
+
+.genre-table-top {
+    font-size: 14px;
+    text-align: center;
+    padding: 3px 0 0 0;
+}
+
+.genre-table-top {
+    font-size: 14px;
+    text-align: center;
+    padding: 3px 0 0 0;
+}
+
+.genre-table-bottom {
+}
+
+.genre-table-bottom>td>a {
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.there {
+    text-decoration: underline;
+    margin-right: 5px;
+}
+
+.backcollor {
+    background-color: #EEEEEE;
+}
+
+.complet {
+    margin: 40px auto 40px auto;
+}

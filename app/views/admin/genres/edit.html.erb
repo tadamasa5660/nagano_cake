@@ -1,0 +1,19 @@
+<div class="body">
+  <div class="container">
+   <h3 class="col-xs-offset-1">ジャンル編集</h3>
+   <div class="row">
+    <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+       <div class="leftspace center-align">
+         <%= f.label :"ジャンル名", class:"col-xs-2" %>
+         <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"ジャンル名", class:"col-xs-2" %>
+         <%= f.submit "変更を保存", class: "btn btn-success b1 edit-b" %>
+       </div>
+    <% end %>
+   </div>
+  </div>
+</div>
+
+
+
+
+

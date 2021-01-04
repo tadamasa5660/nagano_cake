@@ -1,0 +1,53 @@
+<div class="body">
+  <div class="container">
+   <div class="row col-xs-10">
+    <h3 class="col-xs-offset-1">商品一覧</h3>
+   </div>
+   <div class="row col-xs-2 plus">
+    <%= link_to new_admin_item_path do %>
+      <%= image_tag 'plus_icon.png'  %>
+     <% end %>
+   </div>
+   <div class="row col-xs-offset-1 col-xs-10 paginate">
+    <table class="table sidline blackline2">
+     <thead class="left blackline">
+      <tr class="blackline backcollor">
+       <th>商品ID</th>
+       <th>商品名</th>
+       <th>税抜き価格</th>
+       <th>ジャンル</th>
+       <th>ステータス</th>
+      </tr>
+     </thead>
+     <tbody class="left blackline">
+      <% @items.each do |item| %>
+       <tr class="blackline">
+        <td class="blackline">
+         <%= item.id %>
+        </td>
+        <td class="under-line blackline">
+         <%= link_to admin_item_path(item.id) do %>
+          <%= item.name %>
+         <% end %>
+        </td>
+        <td class="blackline">
+         <%= item.price.to_s(:delimited) %>
+        </td>
+        <td class="blackline">
+         <%= item.genre.name %>
+        </td>
+        <td class="blackline">
+         <% if item.is_active == true %>
+          <strong class="green">販売中</strong>
+          <% else %>
+          <strong class="silver">販売停止中</strong>
+         <% end %>
+        </td>
+       </tr>
+      <% end %>
+     </tbody>
+    </table>
+    <%= paginate @items%>
+   </div>
+  </div>
+</div>
